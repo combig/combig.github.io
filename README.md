@@ -2,7 +2,7 @@
 
 Hugo + PaperMod + PagesCMS + GitHub Pages 的个人博客。
 
-- 线上地址：<https://REPLACE_ME.github.io/>
+- 线上地址：<https://combig.github.io/>
 - 内容后台：<https://app.pagescms.org/>
 
 ## 本地预览
