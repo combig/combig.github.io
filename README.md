@@ -25,9 +25,12 @@ bash scripts/fetch-theme.sh v8.0
 ### 方式一：PagesCMS（推荐，不用装任何东西）
 
 1. 打开 <https://app.pagescms.org/>，用 GitHub 登录
-2. 选中本仓库 → 左侧「文章」
+2. 选中本仓库 → 左侧「文章」写博客，「独立页面」改关于页
 3. 新建 / 编辑 → Save，它会自动往 `main` 提交 commit
 4. GitHub Actions 跑完（约 1 分钟）网站自动更新
+
+> 站点标题、作者、社交链接这些在 `hugo.toml` 里，直接在 GitHub 网页上改就行
+> （没开放给 PagesCMS：它会重写整个文件，未声明的配置项会被清掉）。
 
 ### 方式二：本地写
 
