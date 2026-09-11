@@ -1,0 +1,105 @@
+baseURL = 'https://REPLACE_ME.github.io/'
+title = '我的小站'
+theme = 'PaperMod'
+locale = 'zh-CN'
+defaultContentLanguage = 'zh'
+paginate = 10
+enableRobotsTXT = true
+enableEmoji = true
+pygmentsUseClasses = true
+
+# 中文摘要/字数统计更准确
+hasCJKLanguage = true
+
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+
+[params]
+  env = 'production'
+  author = '你的名字'
+  description = '一个用 Hugo + PagesCMS 搭建的个人博客'
+  keywords = ['个人博客', 'Hugo', '写作']
+  authorEmoji = '👋'
+  DateFormat = '2006-01-02'
+  defaultTheme = 'auto'          # auto / light / dark
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowWordCount = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = true
+  ShowRssButtonInSectionTermList = true
+  ShowToc = true
+  TocOpen = false
+  hideMeta = false
+  hideFooter = false
+  comments = false
+
+  [params.label]
+    text = '首页'
+    icon = 'apple-touch-icon.png'
+    iconHeight = 35
+
+  [params.homeInfoParams]
+    Title = '你好，欢迎来逛逛 👋'
+    Content = '''这里是我的个人博客。写点技术笔记、读书感想和生活碎碎念。
+文章用 Markdown 写，通过 PagesCMS 在浏览器里就能直接编辑发布。'''
+
+  [[params.socialIcons]]
+    name = 'github'
+    url = 'https://github.com/REPLACE_ME'
+  [[params.socialIcons]]
+    name = 'email'
+    url = 'mailto:you@example.com'
+  [[params.socialIcons]]
+    name = 'rss'
+    url = '/index.xml'
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ['title', 'permalink', 'summary', 'content']
+
+[menu]
+  [[menu.main]]
+    identifier = 'posts'
+    name = '文章'
+    url = '/posts/'
+    weight = 10
+  [[menu.main]]
+    identifier = 'categories'
+    name = '分类'
+    url = '/categories/'
+    weight = 20
+  [[menu.main]]
+    identifier = 'tags'
+    name = '标签'
+    url = '/tags/'
+    weight = 30
+  [[menu.main]]
+    identifier = 'about'
+    name = '关于'
+    url = '/about/'
+    weight = 40
+  [[menu.main]]
+    identifier = 'search'
+    name = '搜索'
+    url = '/search/'
+    weight = 50
+
+# 首页额外输出 JSON，供 PaperMod 站内搜索使用
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  noClasses = false
+  style = 'github-dark'

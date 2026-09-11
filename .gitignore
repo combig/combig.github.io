@@ -1,0 +1,11 @@
+# Hugo 构建产物
+/public/
+/resources/
+.hugo_build.lock
+
+# 主题已随仓库提交（vendored），如需升级见 scripts/fetch-theme.sh
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,121 @@
+media:
+  input: static/images
+  output: /images
+  extensions:
+    - jpg
+    - jpeg
+    - png
+    - gif
+    - svg
+    - webp
+    - avif
+    - ico
+
+content:
+  # ---------- 博客文章 ----------
+  - name: posts
+    label: 文章
+    type: collection
+    path: content/posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date, draft, tags]
+      primary: title
+      sort: date
+      search: title
+    fields:
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: date
+        label: 发布日期
+        type: date
+        required: true
+      - name: lastmod
+        label: 最后修改
+        type: date
+      - name: draft
+        label: 草稿（不公开）
+        type: boolean
+        default: false
+      - name: tags
+        label: 标签
+        type: array
+      - name: categories
+        label: 分类
+        type: array
+      - name: description
+        label: 摘要
+        type: text
+        description: 显示在文章列表和搜索结果里，也可以留空
+      - label: 封面图
+        name: cover
+        type: object
+        fields:
+          - name: image
+            label: 图片
+            type: image
+          - name: alt
+            label: 替代文字
+            type: string
+      - name: body
+        label: 正文
+        type: code
+        options:
+          language: markdown
+
+  # ---------- 独立页面 ----------
+  - name: pages
+    label: 独立页面
+    type: collection
+    path: content
+    exclude:
+      - posts
+    filename: "{primary}.md"
+    view:
+      fields: [title, draft]
+      primary: title
+    fields:
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: draft
+        label: 草稿（不公开）
+        type: boolean
+        default: false
+      - name: description
+        label: 摘要
+        type: text
+      - name: body
+        label: 正文
+        type: code
+        options:
+          language: markdown
+
+  # ---------- 站点设置 ----------
+  - name: settings
+    label: 站点设置
+    type: file
+    path: hugo.toml
+    parser: frontmatter
+    fields:
+      - name: title
+        label: 站点标题
+        type: string
+      - name: description
+        label: 站点描述
+        type: string
+        description: 对应 [params] 下的 description
+      - name: author
+        label: 作者
+        type: string
+      - name: defaultTheme
+        label: 默认主题
+        type: select
+        options:
+          values:
+            - auto
+            - light
+            - dark
