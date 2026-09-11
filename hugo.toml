@@ -1,4 +1,4 @@
-baseURL = 'https://REPLACE_ME.github.io/'
+baseURL = 'https://combig.github.io/'
 title = '我的小站'
 theme = 'PaperMod'
 locale = 'zh-CN'
@@ -49,10 +49,7 @@ hasCJKLanguage = true
 
   [[params.socialIcons]]
     name = 'github'
-    url = 'https://github.com/REPLACE_ME'
-  [[params.socialIcons]]
-    name = 'email'
-    url = 'mailto:you@example.com'
+    url = 'https://github.com/combig'
   [[params.socialIcons]]
     name = 'rss'
     url = '/index.xml'
