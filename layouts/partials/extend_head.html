@@ -3,15 +3,37 @@
 <meta name="theme-color" content="#2563eb">
 
 <style>
-  <script>
+  /* 导航栏 logo 和文章标题去掉加粗 */
+  .logo a { font-weight: 400; }
+  .entry-header h2 { font-weight: 400; }
+
+  /* 首页：隐藏社交图标 + 欢迎大标题 */
+  .home-info .entry-footer { display: none; }
+  .home-info .entry-header { display: none; }
+
+  /* 欢迎文字段落的默认边距归零 */
+  .home-info .entry-content p { margin: 0; }
+
+  /* 导航栏与文章正文左对齐 */
+  :root {
+    --nav-width: var(--main-width);
+  }
+  /* 首页欢迎板块：上下间距统一为 8px */
+  .first-entry {
+    min-height: auto;
+    justify-content: flex-start;
+    margin: 0 0 8px;
+  }
+  body.list .main {
+    padding-top: 8px;
+  }
+</style>
+
+<script>
 (function () {
-  // 北京坐标
   var lat = 39.9042, lng = 116.4074;
-  // 取当前北京时间（UTC+8，与访客所在时区无关）
   var n = new Date();
   var bj = new Date(n.getTime() + n.getTimezoneOffset() * 60000 + 8 * 3600000);
-
-  // NOAA 日出日落近似算法 → 北京时间小时
   function sun(date) {
     var rad = Math.PI / 180;
     var day = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
@@ -30,7 +52,6 @@
       set: ((H) / 15 + RA - 0.06571 * (day - 1) - 6.622 + 8 + 24) % 24
     };
   }
-
   var s = sun(bj);
   var h = bj.getHours() + bj.getMinutes() / 60;
   var theme = (h >= s.rise && h < s.set) ? 'light' : 'dark';
@@ -38,33 +59,3 @@
   try { localStorage.setItem('pref-theme', theme); } catch (e) {}
 })();
 </script>
-
-  /* 导航栏 logo 和文章标题去掉加粗 */
-.logo a { font-weight: 400; }
-.entry-header h2 { font-weight: 400; }
-
-  /* 首页：隐藏社交图标 + 欢迎大标题 */
-.home-info .entry-footer { display: none; }
-.home-info .entry-header { display: none; }
-
-/* 欢迎文字段落的默认边距归零 */
-.home-info .entry-content p { margin: 0; }
-
-/* 导航栏与文章正文左对齐 */
-:root {
-  --nav-width: var(--main-width);
-}
-/* 首页欢迎板块：上下间距统一为 8px */
-/* 抵消 .main 自带的 24px 上内边距，否则上边距会比下边距大 */
-.first-entry {
-  min-height: auto;
-  justify-content: flex-start;
-  margin: 0 0 8px;
-}
-body.list .main {
-  padding-top: 8px;
-}
-/* 首页：隐藏社交图标 + 欢迎大标题（你之前加的） */
-.home-info .entry-footer { display: none; }
-.home-info .entry-header { display: none; }
-</style>
