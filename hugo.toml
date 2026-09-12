@@ -1,5 +1,5 @@
 baseURL = 'https://combig.github.io/'
-title = '蔡辉个人网站'
+title = 'caihui's blog'
 theme = 'PaperMod'
 locale = 'zh-CN'
 defaultContentLanguage = 'zh'
@@ -38,7 +38,7 @@ hasCJKLanguage = true
   comments = false
 
   [params.label]
-    text = 'hi,caihui!'
+    text = 'hi,caihui'
     icon = 'favicon.svg'
     iconHeight = 28
 
