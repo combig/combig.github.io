@@ -3,6 +3,13 @@
 <meta name="theme-color" content="#2563eb">
 
 <style>
+  /* 首页：隐藏社交图标 + 欢迎大标题 */
+.home-info .entry-footer { display: none; }
+.home-info .entry-header { display: none; }
+
+/* 欢迎文字段落的默认边距归零 */
+.home-info .entry-content p { margin: 0; }
+
 /* 导航栏与文章正文左对齐 */
 :root {
   --nav-width: var(--main-width);
