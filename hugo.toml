@@ -43,9 +43,8 @@ hasCJKLanguage = true
     iconHeight = 28
 
   [params.homeInfoParams]
-    Title = '你好，欢迎来到蔡辉的个人网站 👋'
-    Content = '''这里是我的个人博客。写点随笔和生活碎碎念。
-文章用 Markdown 写，通过 PagesCMS 在浏览器里就能直接编辑发布。'''
+    Title = '欢迎来到蔡辉的个人网站'
+    Content = '''欢迎来到我的个人网站，写点随笔和生活碎碎念。'''
 
   [[params.socialIcons]]
     name = 'github'
