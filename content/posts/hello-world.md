@@ -1,5 +1,5 @@
 ---
-title: Hi,caihui！
+title: hi
 date: 2007-09-11
 lastmod: 2026-09-12
 draft: false
