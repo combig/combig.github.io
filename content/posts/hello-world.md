@@ -1,15 +1,14 @@
 ---
-title: "第一篇：Hello World"
-date: 2026-09-11
+title: 第一篇：Hi,caihui！
+date: 2007-09-11
+lastmod: 2026-09-12
 draft: false
-tags: ["随笔"]
-categories: ["生活"]
-description: "站点建好了，这是第一篇文章。"
-cover:
-  image: ""
-  alt: ""
+tags:
+  - 随笔
+categories:
+  - 生活
+description: 站点建好了，这是第一篇文章。
 ---
-
 站点搭好了，这是第一篇文章。
 
 ## 接下来可以做的事
@@ -26,3 +25,4 @@ cover:
 - 正文用 Markdown，`##` 会自动进目录
 - 想让文章不公开，把 `draft` 勾上
 - 封面图可以在编辑界面直接上传，会存到 `static/images/`
+
