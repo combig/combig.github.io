@@ -44,7 +44,7 @@ hasCJKLanguage = true
 
   [params.homeInfoParams]
     Title ='''欢迎来到我的个人网站，写点随笔和生活碎碎念。'''
-    Content = '''欢迎来到我的个人网站，写点随笔和生活碎碎念。'''
+    Content = '''欢迎来到我的个人网站，用Hugo+PagesCMS搭建，写点随笔和生活碎碎念。'''
 
   [[params.socialIcons]]
     name = 'github'
