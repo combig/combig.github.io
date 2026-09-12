@@ -17,6 +17,7 @@ hasCJKLanguage = true
 
 [params]
   env = 'production'
+  author = 'caihui' 改成 author = ''
   description = '一个用 Hugo + PagesCMS 搭建的个人博客'
   keywords = ['个人博客', 'Hugo', '写作']
   authorEmoji = '👋'
