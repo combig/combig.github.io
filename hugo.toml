@@ -43,7 +43,7 @@ hasCJKLanguage = true
     iconHeight = 28
 
   [params.homeInfoParams]
-    Title ='1'
+    Title ='''欢迎来到我的个人网站，写点随笔和生活碎碎念。'''
     Content = '''欢迎来到我的个人网站，写点随笔和生活碎碎念。'''
 
   [[params.socialIcons]]
