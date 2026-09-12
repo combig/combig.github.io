@@ -38,7 +38,7 @@ hasCJKLanguage = true
   comments = false
 
   [params.label]
-    text = 'caihui's blog'
+    text = 'caihui‘s blog'
     icon = 'favicon.svg'
     iconHeight = 28
 
