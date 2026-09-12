@@ -38,12 +38,12 @@ hasCJKLanguage = true
   comments = false
 
   [params.label]
-    text = 'hi,caihui'
+    text = 'caihui's blog'
     icon = 'favicon.svg'
     iconHeight = 28
 
   [params.homeInfoParams]
-    Title ='''欢迎来到蔡辉的个人网站'''
+    Title ='1'
     Content = '''欢迎来到我的个人网站，写点随笔和生活碎碎念。'''
 
   [[params.socialIcons]]
