@@ -3,10 +3,6 @@ title: hi
 date: 2007-09-11
 lastmod: 2026-09-12
 draft: false
-tags:
-  - 随笔
-categories:
-  - 生活
 ---
 第一次写博客，是2006年在Msn Space；  
 后来就是QQ空间；  
