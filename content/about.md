@@ -26,7 +26,7 @@ description: 关于这个站点和我
 
 ## 联系我
 
-- GitHub：[github.com](http://github.com)
+- GitHub：[github.com/combig](http://github.com)
 - 邮箱：[ch@ch.com.cn](mailto:you@example.com)
 
 （以上占位信息记得换成你自己的，改 `hugo.toml` 和这个页面即可。）
