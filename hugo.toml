@@ -38,7 +38,7 @@ hasCJKLanguage = true
   comments = false
 
   [params.label]
-    text = '我的小站'
+    text = 'hi,caihui!'
     icon = 'favicon.svg'
     iconHeight = 28
 
