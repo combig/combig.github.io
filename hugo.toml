@@ -1,5 +1,5 @@
 baseURL = 'https://combig.github.io/'
-title = '我的小站'
+title = '蔡辉个人网站'
 theme = 'PaperMod'
 locale = 'zh-CN'
 defaultContentLanguage = 'zh'
@@ -17,7 +17,7 @@ hasCJKLanguage = true
 
 [params]
   env = 'production'
-  author = '你的名字'
+  author = 'caihui'
   description = '一个用 Hugo + PagesCMS 搭建的个人博客'
   keywords = ['个人博客', 'Hugo', '写作']
   authorEmoji = '👋'
@@ -43,8 +43,8 @@ hasCJKLanguage = true
     iconHeight = 28
 
   [params.homeInfoParams]
-    Title = '你好，欢迎来逛逛 👋'
-    Content = '''这里是我的个人博客。写点技术笔记、读书感想和生活碎碎念。
+    Title = '你好，欢迎来到蔡辉的个人网站 👋'
+    Content = '''这里是我的个人博客。写点随笔和生活碎碎念。
 文章用 Markdown 写，通过 PagesCMS 在浏览器里就能直接编辑发布。'''
 
   [[params.socialIcons]]
