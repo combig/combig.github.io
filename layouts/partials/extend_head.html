@@ -7,14 +7,12 @@
 :root {
   --nav-width: var(--main-width);
 }
-
-/* 首页欢迎板块：去掉强制高度和垂直居中，恢复正常间距 */
+/* 首页欢迎板块：间距统一缩小 */
 .first-entry {
   min-height: auto;
   justify-content: flex-start;
-  margin: var(--gap) 0;
+  margin: 12px 0;              /* 上下统一为 12px */
 }
-
 /* 首页欢迎板块：隐藏 github / rss 社交图标 */
 .home-info .entry-footer {
   display: none;
