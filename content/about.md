@@ -1,14 +1,11 @@
 ---
 title: 关于
 draft: false
-description: 关于这个站点和我
 ---
-## 你好 👋
-
-这里是我的个人网站。目前主要用来放：
+## 主要记录：
 
 - **技术笔记** —— 折腾过的东西，踩过的坑
-- **读书感想** —— 读完想留下点什么
+- **随笔** —— 读完想留下点什么
 - **生活碎碎念** —— 偶尔
 
 ## 这个站是怎么搭的
@@ -29,4 +26,3 @@ description: 关于这个站点和我
 - GitHub：[github.com/combig](http://github.com)
 - 邮箱：[ch@ch.com.cn](mailto:you@example.com)
 
-（以上占位信息记得换成你自己的，改 `hugo.toml` 和这个页面即可。）
