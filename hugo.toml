@@ -39,7 +39,6 @@ hasCJKLanguage = true
 
   [params.label]
     text = 'caihui‘s blog'
-    icon = 'favicon.svg'
     iconHeight = 28
 
   [params.homeInfoParams]
