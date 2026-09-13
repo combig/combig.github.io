@@ -77,11 +77,6 @@ hasCJKLanguage = true
     name = '关于'
     url = '/about/'
     weight = 40
-  [[menu.main]]
-    identifier = 'search'
-    name = '搜索'
-    url = '/search/'
-    weight = 50
 
 # 首页额外输出 JSON，供 PaperMod 站内搜索使用
 [outputs]
