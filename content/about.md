@@ -22,5 +22,5 @@ draft: false
 **联系我**
 
 - GitHub：[github.com/combig](http://github.com)
-- 邮箱：[ch@ch.com.cn](mailto:you@example.com)
+- 邮箱：[hi@cgh.cn](mailto:you@example.com)
 
