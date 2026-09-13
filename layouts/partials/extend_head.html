@@ -62,4 +62,80 @@
   }
   .paginav a.next { justify-content: flex-end; }
   .paginav a.prev { justify-content: flex-start; }
+
+  /* 背景音乐：右下角悬浮唱片按钮 */
+  #bgm-widget { position: fixed; right: 18px; bottom: 18px; z-index: 999; }
+  #bgm-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    cursor: pointer; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #bgm-disc {
+    width: 30px; height: 30px; border-radius: 50%;
+    background:
+      radial-gradient(circle at center, #f6f7f8 0 5px, #333 5px 6px, #222 6px 15px);
+    animation: bgm-spin 3s linear infinite;
+    animation-play-state: paused;
+  }
+  #bgm-btn.playing #bgm-disc { animation-play-state: running; }
+  @keyframes bgm-spin { to { transform: rotate(360deg); } }
 </style>
+
+<!-- 背景音乐：文件放在 static/music/bgm.mp3，循环播放；访客首次点击页面任意处开始播放 -->
+<div id="bgm-widget" style="display:none">
+  <audio id="bgm-audio" src="/music/bgm.mp3" loop preload="auto"></audio>
+  <button id="bgm-btn" aria-label="背景音乐 播放/暂停" title="背景音乐：点击暂停/播放">
+    <span id="bgm-disc"></span>
+  </button>
+</div>
+<script>
+(function () {
+  var wrap = document.getElementById('bgm-widget');
+  var audio = document.getElementById('bgm-audio');
+  var btn = document.getElementById('bgm-btn');
+  var started = false;
+
+  // 文件不存在或加载失败：整体隐藏，不显示按钮
+  audio.addEventListener('error', function () { wrap.style.display = 'none'; });
+  // 文件可播：显示按钮
+  audio.addEventListener('canplaythrough', function () { wrap.style.display = 'block'; });
+
+  function beginPlayback() {
+    if (started) return;
+    started = true;
+    var p = audio.play();
+    if (p && p.catch) {
+      p.then(function () { btn.classList.add('playing'); })
+       .catch(function () { started = false; });
+    } else {
+      btn.classList.add('playing');
+    }
+  }
+
+  // 访客首次任意交互（点击/滚动/按键/触摸）即开始播放
+  var events = ['pointerdown', 'keydown', 'wheel', 'touchstart', 'scroll'];
+  function onFirstInteraction() {
+    events.forEach(function (ev) { window.removeEventListener(ev, onFirstInteraction); });
+    beginPlayback();
+  }
+  events.forEach(function (ev) {
+    window.addEventListener(ev, onFirstInteraction, { passive: true });
+  });
+
+  // 悬浮按钮：手动暂停/恢复
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    started = true; // 手动操作后不再被首次交互逻辑干扰
+    if (audio.paused) {
+      audio.play();
+      btn.classList.add('playing');
+    } else {
+      audio.pause();
+      btn.classList.remove('playing');
+    }
+  });
+})();
+</script>
