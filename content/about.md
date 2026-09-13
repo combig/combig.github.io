@@ -2,13 +2,13 @@
 title: 关于
 draft: false
 ---
-## 主要记录：
+**主要记录**
 
 - **技术笔记** —— 折腾过的东西，踩过的坑
 - **随笔** —— 读完想留下点什么
 - **生活碎碎念** —— 偶尔
 
-## 这个站是怎么搭的
+**这个站是怎么搭的**
 
 
 | 部分 | 选型 |
@@ -19,9 +19,7 @@ draft: false
 | 托管 | GitHub Pages + GitHub Actions |
 
 
-每次往 `main` 分支推代码，GitHub Actions 会自动构建并上线，通常 1 分钟内生效。
-
-## 联系我
+** 联系我 **
 
 - GitHub：[github.com/combig](http://github.com)
 - 邮箱：[ch@ch.com.cn](mailto:you@example.com)
