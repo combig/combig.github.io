@@ -36,11 +36,11 @@
     padding-top: 4px !important;
 }
 
-  /* 内容页：页面浅灰底 + 白色卡片，让内容有「色块」感 */
+  /* 内容页（body 无 list class 的页面）：白色卡片 */
   body {
     background: #f6f7f8;
   }
-  body.single .main {
+  body:not(.list) .main {
     background: #fff;
     border: 1px solid var(--border);
     border-radius: var(--radius);
