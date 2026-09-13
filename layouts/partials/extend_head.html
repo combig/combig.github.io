@@ -47,7 +47,7 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     padding: 24px 28px !important;
     margin: 0 auto; /* 顶部贴 LOGO、水平居中 */
-    width: var(--main-width); /* 720px，与列表页白色卡片同宽同位置 */
+    width: min(var(--main-width), calc(100% - var(--gap) * 2)); /* 桌面 720px 与列表页卡片同宽；小屏自动收缩适配手机/pad */
   }
 
   /* 列表页大标题（Posts / 标签 / 分类等）与 RSS 图标：隐藏 */
