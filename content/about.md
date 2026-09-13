@@ -17,4 +17,4 @@ draft: false
 
 **联系我**
 - GitHub：github.com/combig
-- 邮箱：[hi@cgh.cn](mailto:hi@cgh.cn)
+- 邮箱：hi@cgh.cn
