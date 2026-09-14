@@ -99,14 +99,44 @@
   var btn = document.getElementById('bgm-btn');
   var started = false;
 
+  // 跨页面记住播放进度和播放状态（localStorage 持久保存）
+  var KEY_TIME = 'bgm-time', KEY_STATE = 'bgm-state';
+
   // 文件不存在或加载失败：整体隐藏，不显示按钮
   audio.addEventListener('error', function () { wrap.style.display = 'none'; });
-  // 文件可播：显示按钮
-  audio.addEventListener('canplaythrough', function () { wrap.style.display = 'block'; });
+  // 元数据就绪（preload=metadata 时即触发）：显示按钮 + 恢复上次播放位置
+  audio.addEventListener('loadedmetadata', function () {
+    wrap.style.display = 'block';
+    var saved = parseFloat(localStorage.getItem(KEY_TIME) || '0');
+    if (saved > 0 && (!audio.duration || saved < audio.duration - 1)) {
+      try { audio.currentTime = saved; } catch (e) {}
+    }
+  });
+
+  // 每秒记录播放进度；离开页面前也记录一次
+  setInterval(function () {
+    if (!audio.paused && audio.currentTime > 0) {
+      try { localStorage.setItem(KEY_TIME, String(audio.currentTime)); } catch (e) {}
+    }
+  }, 1000);
+  window.addEventListener('pagehide', function () {
+    try {
+      if (audio.currentTime > 0) localStorage.setItem(KEY_TIME, String(audio.currentTime));
+      localStorage.setItem(KEY_STATE, audio.paused ? 'paused' : 'playing');
+    } catch (e) {}
+  });
+  audio.addEventListener('play', function () {
+    try { localStorage.setItem(KEY_STATE, 'playing'); } catch (e) {}
+  });
+  audio.addEventListener('pause', function () {
+    try { localStorage.setItem(KEY_STATE, 'paused'); } catch (e) {}
+  });
 
   function beginPlayback() {
     if (started) return;
     started = true;
+    // 上次被手动暂停的用户：尊重暂停状态，点唱片按钮才恢复
+    if (localStorage.getItem(KEY_STATE) === 'paused') { started = false; return; }
     var p = audio.play();
     if (p && p.catch) {
       p.then(function () { btn.classList.add('playing'); })
@@ -115,6 +145,24 @@
       btn.classList.add('playing');
     }
   }
+
+  // 页面加载即尝试自动续播（常访客/已交互过的浏览器会放行），失败则等首次交互
+  function tryAutoResume() {
+    if (audio.readyState >= 1) {
+      var saved = parseFloat(localStorage.getItem(KEY_TIME) || '0');
+      if (saved > 0 && (!audio.duration || saved < audio.duration - 1)) {
+        try { audio.currentTime = saved; } catch (e) {}
+      }
+    }
+    var p = audio.play();
+    if (p && p.catch) {
+      p.then(function () { started = true; btn.classList.add('playing'); })
+       .catch(function () { /* 被浏览器拦截：等首次交互 */ });
+    } else {
+      started = true; btn.classList.add('playing');
+    }
+  }
+  if (localStorage.getItem(KEY_STATE) !== 'paused') tryAutoResume();
 
   // 访客首次任意交互（点击/滚动/按键/触摸）即开始播放
   var events = ['pointerdown', 'keydown', 'wheel', 'touchstart', 'scroll'];
