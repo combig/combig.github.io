@@ -209,3 +209,63 @@
   });
 })();
 </script>
+
+<!-- PJAX 站内跳转：只替换内容区，不整页刷新 → 背景音乐跨页面连续播放不中断 -->
+<script>
+(function () {
+  if (!('fetch' in window) || !window.DOMParser) return;
+  var BUSY = false;
+  var SKIP_RE = /\.(mp3|xml|zip|pdf|png|jpe?g|gif|svg|ico|txt|css|js)$/i;
+
+  function handleClick(e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (!a || !a.href) return;
+    if (a.target && a.target !== '_self') return;
+    if (a.hasAttribute('download') || a.getAttribute('rel') === 'external') return;
+    var url;
+    try { url = new URL(a.href, location.href); } catch (err) { return; }
+    if (url.origin !== location.origin || SKIP_RE.test(url.pathname)) return;
+    if (url.pathname === location.pathname && url.search === location.search && url.hash) return; // 同页锚点走默认
+    if (!document.querySelector('main.main')) return;
+    e.preventDefault();
+    load(url.href + url.hash, true);
+  }
+
+  function swap(doc, href) {
+    var newMain = doc.querySelector('main.main');
+    var curMain = document.querySelector('main.main');
+    if (!newMain || !curMain) return false;
+    curMain.innerHTML = newMain.innerHTML;
+    curMain.id = newMain.id || curMain.id;
+    var curHeader = document.querySelector('header.header');
+    var newHeader = doc.querySelector('header.header');
+    if (curHeader && newHeader) curHeader.innerHTML = newHeader.innerHTML;
+    document.title = doc.title;
+    var h = href.indexOf('#');
+    if (h > -1 && href.slice(h + 1)) {
+      var el = document.getElementById(decodeURIComponent(href.slice(h + 1)));
+      if (el) { el.scrollIntoView(); return true; }
+    }
+    window.scrollTo(0, 0);
+    return true;
+  }
+
+  function load(href, push) {
+    if (BUSY) return;
+    BUSY = true;
+    fetch(href, { credentials: 'same-origin' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        if (!swap(doc, href)) throw new Error('structure');
+        if (push) history.pushState({}, '', href);
+      })
+      .catch(function () { location.href = href; }) // 任何异常回退整页跳转
+      .then(function () { BUSY = false; });
+  }
+
+  document.addEventListener('click', handleClick);
+  window.addEventListener('popstate', function () { load(location.href, false); });
+})();
+</script>
