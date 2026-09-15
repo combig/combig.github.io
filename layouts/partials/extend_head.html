@@ -238,6 +238,9 @@
     if (!newMain || !curMain) return false;
     curMain.innerHTML = newMain.innerHTML;
     curMain.id = newMain.id || curMain.id;
+    // 同步 body 的 class/id（列表页有 list class，文章页没有，决定白卡片样式）
+    document.body.className = doc.body.className;
+    document.body.id = doc.body.id || document.body.id;
     var curHeader = document.querySelector('header.header');
     var newHeader = doc.querySelector('header.header');
     if (curHeader && newHeader) curHeader.innerHTML = newHeader.innerHTML;
